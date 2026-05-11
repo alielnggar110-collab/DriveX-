@@ -77,12 +77,9 @@ export class BookingDialogComponent implements OnInit, OnDestroy {
 
   onCardNumberInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    // Remove any non-numeric characters
     let value = input.value.replace(/[^0-9]/g, '');
-    // Limit to 14 digits
     value = value.slice(0, this.cardDigits);
     input.value = value;
-    // Update form control
     this.bookingForm.get('cardNumber')?.setValue(value);
   }
 
@@ -90,7 +87,6 @@ export class BookingDialogComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.bookingForm.valid) {
-      // Book the car if carId is provided
       if (this.data.carId) {
         this.carsService.bookCar(this.data.carId).subscribe({
           next: (car) => {

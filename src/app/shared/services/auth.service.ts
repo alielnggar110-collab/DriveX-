@@ -5,7 +5,6 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private isBrowser = false;
-  // ✅ نعرفه بقيمة افتراضية وبدون localStorage
   private loggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.loggedIn.asObservable();
 
@@ -15,7 +14,6 @@ export class AuthService {
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
-    // ✅ نقرأ من localStorage جوا الـ constructor وبعد التحقق
     if (this.isBrowser) {
       const isLogged = localStorage.getItem('isLoggedIn') === 'true';
       this.loggedIn.next(isLogged);

@@ -6,12 +6,11 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ThemeService {
   private isBrowser: boolean;
-  private currentTheme = 'light'; // ✅ متغير عادي بدون localStorage
+  private currentTheme = 'light';
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     
-    // ✅ كل حاجة جوا الكونستركتور وبعد التحقق
     if (this.isBrowser) {
       this.currentTheme = localStorage.getItem('theme') || 'light';
       this.applyTheme(this.currentTheme);

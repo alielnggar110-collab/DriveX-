@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarsService, Car } from '../../shared/services/cars.service';
 import { AuthService } from '../../shared/services/auth.service';
-import { DialogService } from '../../shared/services/dialog.service'; // <-- غير الاستيراد
+import { DialogService } from '../../shared/services/dialog.service';
 import { environment } from '../../../environments/environments';
 
 
@@ -22,7 +22,7 @@ private isBrowser = false;
     private carsService: CarsService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialogService: DialogService, // <-- غير الاسم هنا
+    private dialogService: DialogService,
     private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
@@ -38,9 +38,8 @@ private isBrowser = false;
   }
 
    book(): void {
-    if (!this.isBrowser) return; // ✅ لو في السيرفر، خلاص سيبه متفتحش
+    if (!this.isBrowser) return;
     
-    // ملاحظة: الكود ده في السطر الجاي غلط لوجيكياً، هقولك في المشكلة التانية
      if (!this.authService.isLoggedIn) { 
       this.router.navigate(['/login']); 
       return; 
@@ -53,8 +52,7 @@ private isBrowser = false;
       pricePerDay: this.car.price,
       carId: this.car.id,
       onBookingComplete: () => {
-        // Navigate back to cars page after successful booking
-        this.router.navigate(['/cars']);
+          this.router.navigate(['/cars']);
       }
     });
   }

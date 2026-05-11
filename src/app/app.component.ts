@@ -20,10 +20,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Show spinner during initial load
     this.spinnerService.show();
     
-    // Hide spinner once router navigation is complete
     this.router.events.subscribe(() => {
       setTimeout(() => {
         this.spinnerService.hide();

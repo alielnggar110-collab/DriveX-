@@ -3,7 +3,6 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
 
-      <!-- Logo -->
       <a routerLink="/" (click)="closeMobile()" class="flex items-center gap-2 group">
         <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -15,7 +14,6 @@
         </span>
       </a>
 
-      <!-- Desktop Links -->
       <div class="hidden md:flex items-center gap-3">
         <a routerLink="/" routerLinkActive="bg-green-500 !text-black rounded-full"
            [routerLinkActiveOptions]="{exact: true}"
@@ -32,7 +30,6 @@
         </a>
       </div>
 
-      <!-- Desktop Actions -->
       <div class="hidden md:flex items-center gap-3">
         <button (click)="toggleTheme()"
                 class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:scale-105">
@@ -60,7 +57,6 @@
         }
       </div>
 
-      <!-- Mobile Toggle -->
       <button (click)="toggleMobile()"
               class="md:hidden w-10 h-10 rounded-xl flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
         @if (!isMobileOpen) {
@@ -76,7 +72,6 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
   @if (isMobileOpen) {
     <div class="md:hidden bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 shadow-xl">
       <div class="px-4 py-4 space-y-1">

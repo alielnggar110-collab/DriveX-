@@ -16,136 +16,123 @@ export interface Car {
 export class CarsService {
   private cars: Car[] = [
     {
-      id: 1,
-      name: 'Toyota Corolla 2024',
-      category: 'toyota',
-      price: 1200,
-      count: 5,
-      image: 'https://picsum.photos/seed/toyota-corolla24/600/400',
-      description:
-        'An economical and practical sedan from Toyota, known for its fuel efficiency and driving comfort. Equipped with a 1.6L engine and advanced safety technologies.',
+      "count": 5,
+      "id": 1,
+      "name": "Toyota Corolla 2024",
+      "category": "toyota",
+      "price" : 1900 ,
+      "image":"https://images.unsplash.com/photo-1590362891991-f776e747a588?w=600&h=400&fit=crop&q=80",
+      "description": "An economical and practical sedan from Toyota, known for its fuel efficiency and driving comfort. Equipped with a 1.6L engine and advanced safety technologies."
     },
     {
-      id: 2,
-      name: 'Toyota Camry 2024',
-      category: 'toyota',
-      price: 1800,
-      count: 3,
-      image: 'https://picsum.photos/seed/toyota-camry24/600/400',
-      description:
-        'The luxurious Toyota Camry sedan combines elegance with high performance. Powered by a 2.5L engine producing 203 horsepower.',
+      "id": 2,
+      "name": "Toyota Camry 2024",
+      "category": "toyota",
+      "price": 1800,
+      "count": 3,
+      "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop&q=80",
+      "description": "The luxurious Toyota Camry sedan combines elegance with high performance. Powered by a 2.5L engine producing 203 horsepower."
     },
     {
-      id: 3,
-      name: 'Toyota Land Cruiser 2024',
-      category: 'toyota',
-      price: 4000,
-      count: 2,
-      image: 'https://picsum.photos/seed/landcruiser24/600/400',
-      description:
-        'The legendary king of off-road, Toyota Land Cruiser with a 3.5L twin-turbo V6 engine. Advanced four-wheel drive system.',
+      "id": 3,
+      "name": "Toyota Land Cruiser 2024",
+      "category": "toyota",
+      "price": 4000,
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop&q=80",
+      "description": "The legendary king of off-road, Toyota Land Cruiser with a 3.5L twin-turbo V6 engine. Advanced four-wheel drive system."
     },
     {
-      id: 4,
-      name: 'BMW 320i 2024',
-      category: 'bmw',
-      price: 2500,
-      count: 3,
-      image: 'https://picsum.photos/seed/bmw-320i24/600/400',
-      description:
-        'BMW 3 Series, the luxury sports sedan. 2.0L turbo engine producing 184 horsepower with sport seats.',
+      "id": 4,
+      "name": "BMW 320i 2024",
+      "category": "bmw",
+      "price": 2500,
+      "count": 3,
+      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop&q=80",
+      "description": "BMW 3 Series, the luxury sports sedan. 2.0L turbo engine producing 184 horsepower with sport seats."
     },
     {
-      id: 5,
-      name: 'BMW X5 2024',
-      category: 'bmw',
-      price: 4500,
-      count: 2,
-      image: 'https://picsum.photos/seed/bmw-x5-24/600/400',
-      description:
-        'The luxury SUV from BMW. 3.0L inline-six turbo engine producing 335 horsepower with xDrive intelligent all-wheel drive.',
+      "id": 5,
+      "name": "BMW X5 2024",
+      "category": "bmw",
+      "price": 4500,
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=600&h=400&fit=crop&q=80",
+      "description": "The luxury SUV from BMW. 3.0L inline-six turbo engine producing 335 horsepower with xDrive intelligent all-wheel drive."
     },
     {
-      id: 6,
-      name: 'BMW 520i 2024',
-      category: 'bmw',
-      price: 3000,
-      count: 2,
-      image: 'https://picsum.photos/seed/bmw-520i-24/600/400',
-      description:
-        'The executive sedan from BMW. 2.0L turbo engine producing 208 horsepower with iDrive 8 system.',
+      "id": 6,
+      "name": "BMW 520i 2024",
+      "category": "bmw",
+      "price": 3000,
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=400&fit=crop&q=80",
+      "description": "The executive sedan from BMW. 2.0L turbo engine producing 208 horsepower with iDrive 8 system."
     },
     {
-      id: 7,
-      name: 'Chery Tiggo 4 Pro 2024',
-      category: 'chery',
-      price: 1000,
-      count: 6,
-      image: 'https://picsum.photos/seed/chery-tiggo4p/600/400',
-      description:
-        'An economical crossover from Chery, ideal for city driving. 1.5L turbo engine with CVT transmission.',
+      "id": 7,
+      "name": "Chery Tiggo 4 Pro 2024",
+      "category": "chery",
+      "price": 1000,
+      "count": 6,
+      "image": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&h=400&fit=crop&q=80",
+      "description": "An economical crossover from Chery, ideal for city driving. 1.5L turbo engine with CVT transmission."
     },
     {
-      id: 8,
-      name: 'Chery Tiggo 8 Pro 2024',
-      category: 'chery',
-      price: 1500,
-      count: 4,
-      image: 'https://picsum.photos/seed/chery-tiggo8p/600/400',
-      description:
-        'A spacious family SUV from Chery with 7 seats. 1.6L turbo engine producing 197 horsepower.',
+      "id": 8,
+      "name": "Chery Tiggo 8 Pro 2024",
+      "category": "chery",
+      "price": 1500,
+      "count": 4,
+      "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&h=400&fit=crop&q=80",
+      "description": "A spacious family SUV from Chery with 7 seats. 1.6L turbo engine producing 197 horsepower."
     },
     {
-      id: 9,
-      name: 'Mercedes C200 2024',
-      category: 'mercedes',
-      price: 3500,
-      count: 2,
-      image: 'https://picsum.photos/seed/merc-c200-24/600/400',
-      description:
-        'The luxury sedan from Mercedes-Benz. 1.5L mild-hybrid turbo engine with EQ Boost system producing 204 horsepower.',
+      "id": 9,
+      "name": "Mercedes C200 2024",
+      "category": "mercedes",
+      "price": 3500,
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=600&h=400&fit=crop&q=80",
+      "description": "The luxury sedan from Mercedes-Benz. 1.5L mild-hybrid turbo engine with EQ Boost system producing 204 horsepower."
     },
     {
-      id: 10,
-      name: 'Mercedes E200 2024',
-      category: 'mercedes',
-      price: 4500,
-      count: 2,
-      image: 'https://picsum.photos/seed/merc-e200-24/600/400',
-      description:
-        'The executive sedan from Mercedes. 2.0L turbo engine producing 197 horsepower with 9G-Tronic transmission.',
+      "id": 10,
+      "name": "Mercedes E200 2024",
+      "category": "mercedes",
+      "price": 4500,
+      "count": 2,
+      "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&h=400&fit=crop&q=80",
+      "description": "The executive sedan from Mercedes. 2.0L turbo engine producing 197 horsepower with 9G-Tronic transmission."
     },
     {
-      id: 11,
-      name: 'Mercedes S500 2024',
-      category: 'mercedes',
-      price: 5000,
-      count: 1,
-      image: 'https://picsum.photos/seed/merc-s500-24/600/400',
-      description:
-        'The pinnacle of luxury from Mercedes-Benz. 3.0L inline-six turbo with mild-hybrid system producing 429 horsepower.',
+      "id": 11,
+      "name": "Mercedes S500 2024",
+      "category": "mercedes",
+      "price": 5000,
+      "count": 1,
+      "image": "https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&h=400&fit=crop&q=80",
+      "description": "The pinnacle of luxury from Mercedes-Benz. 3.0L inline-six turbo with mild-hybrid system producing 429 horsepower."
     },
     {
-      id: 12,
-      name: 'BYD Han 2024',
-      category: 'byd',
-      price: 2000,
-      count: 3,
-      image: 'https://picsum.photos/seed/byd-han-24/600/400',
-      description:
-        'A luxury electric sedan from BYD. Blade Battery with a range of up to 550 km and a unique rotating screen.',
+      "id": 12,
+      "name": "BYD Han 2024",
+      "category": "byd",
+      "price": 2000,
+      "count": 3,
+      "image": "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?w=600&h=400&fit=crop&q=80",
+      "description": "A luxury electric sedan from BYD. Blade Battery with a range of up to 550 km and a unique rotating screen."
     },
     {
-      id: 13,
-      name: 'BYD Seal 2024',
-      category: 'byd',
-      price: 2500,
-      count: 3,
-      image: 'https://picsum.photos/seed/byd-seal-24/600/400',
-      description:
-        'The electric sports car from BYD. Blade Battery with a range of up to 700 km. 0-100 km/h in 5.9 seconds.',
-    },
-  ];
+      "id": 13,
+      "name": "BYD Seal 2024",
+      "category": "byd",
+      "price": 2500,
+      "count": 3,
+      "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=600&h=400&fit=crop&q=80",
+      "description": "The electric sports car from BYD. Blade Battery with a range of up to 700 km. 0-100 km/h in 5.9 seconds."
+    }
+  ]
 
   constructor(private spinner: SpinnerService) {}
 
@@ -156,8 +143,7 @@ export class CarsService {
         this.spinner.hide();
         observer.next(this.cars);
         observer.complete();
-      }, 300); // Simulate loading delay
-    });
+      }, 300);     });
   }
 
   getCarById(id: number): Observable<Car | undefined> {
@@ -167,8 +153,7 @@ export class CarsService {
         this.spinner.hide();
         observer.next(this.cars.find((c) => c.id === id));
         observer.complete();
-      }, 300); // Simulate loading delay
-    });
+      }, 300);     });
   }
 
   updateCarCount(id: number, count: number): Observable<Car | undefined> {
@@ -185,8 +170,7 @@ export class CarsService {
           this.spinner.hide();
           observer.error(new Error('Car not found'));
         }
-      }, 300); // Simulate API delay
-    });
+      }, 300);     });
   }
 
   bookCar(id: number): Observable<Car | undefined> {
@@ -197,7 +181,7 @@ export class CarsService {
         if (carIndex !== -1) {
           const car = this.cars[carIndex];
           if (car.count > 0) {
-            car.count -= 1; // Decrease available cars
+            car.count -= 1;
             this.spinner.hide();
             observer.next(car);
             observer.complete();
@@ -209,7 +193,6 @@ export class CarsService {
           this.spinner.hide();
           observer.error(new Error('Car not found'));
         }
-      }, 300); // Simulate API delay
-    });
+      }, 300);     });
   }
 }

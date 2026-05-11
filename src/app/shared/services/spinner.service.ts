@@ -8,7 +8,6 @@ import { isPlatformBrowser } from '@angular/common';
 export class SpinnerService {
   private isBrowser: boolean;
   
-  // ✅ هنا عرفنا الـ Observable اللي الـ Component بيبحث عنه
   private loadingSubject = new BehaviorSubject<boolean>(false);
   isLoading$ = this.loadingSubject.asObservable();
 
@@ -19,14 +18,14 @@ export class SpinnerService {
   show(): void {
     this.loadingSubject.next(true);
     if (this.isBrowser) {
-      document.body.classList.add('spinner-active'); // لو بتضف كلاس على البدي
+      document.body.classList.add('spinner-active');
     }
   }
 
   hide(): void {
     this.loadingSubject.next(false);
     if (this.isBrowser) {
-      document.body.classList.remove('spinner-active'); // لو بتحذف كلاس من البدي
+      document.body.classList.remove('spinner-active');
     }
   }
 }
