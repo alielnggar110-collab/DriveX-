@@ -1,0 +1,84 @@
+<section class="relative h-[85vh] sm:h-[80vh] overflow-hidden">
+  @for (slide of slides; track $index) {
+    <div class="absolute inset-0 transition-opacity duration-700" [ngClass]="currentSlide === $index ? 'opacity-100' : 'opacity-0'">
+      <img [src]="slide.image" [alt]="slide.title" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center px-4 max-w-3xl" [ngClass]="currentSlide === $index ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'" style="transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);">
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">{{ slide.title }}</h1>
+          <p class="text-base sm:text-lg text-gray-300 mb-8">{{ slide.subtitle }}</p>
+          <a routerLink="/cars" class="inline-block px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-2xl shadow-primary/30 hover:scale-105">Browse Cars</a>
+        </div>
+      </div>
+    </div>
+  }
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+    @for (slide of slides; track $index) {
+      <button (click)="goToSlide($index)" class="w-3 h-3 rounded-full transition-all duration-300" [ngClass]="currentSlide === $index ? 'bg-primary w-8' : 'bg-white/50 hover:bg-white/80'"></button>
+    }
+  </div>
+</section>
+
+<section class="py-16 sm:py-20 bg-white dark:bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">Browse by Brand</h2>
+      <p class="text-gray-500 dark:text-gray-400 mt-2">Choose from the world's most popular brands</p>
+    </div>
+    <div class="flex gap-4 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory scrollbar-hide">
+      @for (cat of categories; track cat.key) {
+        <a [routerLink]="'/cars'" [queryParams]="{category: cat.key}" class="flex-shrink-0 w-48 sm:w-56 snap-start group relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
+          <img [src]="cat.image" [alt]="cat.name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4"><span class="text-white font-bold text-lg">{{ cat.name }}</span></div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-16 sm:py-20 bg-gray-100/50 dark:bg-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">Featured Cars</h2>
+        <p class="text-gray-500 dark:text-gray-400 mt-2">Discover the latest cars available for rent</p>
+      </div>
+      <a routerLink="/cars" class="hidden text-white sm:flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all">View All <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l-7-7 7-7"/></svg></a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (car of featuredCars; track car.id) {
+        <a [routerLink]="'/cars/' + car.id" class="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-800">
+          <div class="relative h-52 overflow-hidden">
+            <img [src]="car.image" [alt]="car.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">{{ car.price.toLocaleString() }} EGP/day</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{ car.name }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed min-h-[2.5rem]">{{ truncate(car.description, 80) }}</p>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="text-xs text-gray-400">Available: {{ car.count }} cars</span>
+              <span class="text-white text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Details <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l-7-7 7-7"/></svg></span>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="sm:hidden mt-6 text-center">
+      <a routerLink="/cars" class="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-xl text-sm">View All Cars</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Start Your Journey?</h2>
+    <p class="text-gray-400 mb-8 text-lg">Book your car now in minutes and enjoy an exceptional driving experience</p>
+    <a routerLink="/cars" class="inline-block px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all shadow-2xl shadow-primary/30 hover:scale-105 text-lg">Book Now</a>
+  </div>
+</section>

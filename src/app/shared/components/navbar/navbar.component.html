@@ -1,0 +1,125 @@
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+     [ngClass]="scrolled ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-lg' : 'bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-800/50'">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a routerLink="/" (click)="closeMobile()" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8 17h8M8 17a4 4 0 01-4-4V7a4 4 0 014-4h8a4 4 0 014 4v6a4 4 0 01-4 4M8 17v2m8-2v2"/>
+          </svg>
+        </div>
+        <span class="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          Drive<span class="text-primary">X</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-3">
+        <a routerLink="/" routerLinkActive="bg-green-500 !text-black rounded-full"
+           [routerLinkActiveOptions]="{exact: true}"
+           class=" text-sm font-medium text-gray-700 dark:text-gray-300  hover:bg-primary/5 transition-all hover:bg-green-500 transform duration-300 hover:scale-[1.1] hover:text-black  py-2 px-6  rounded-2xl">
+          Home
+        </a>
+        <a routerLink="/cars" routerLinkActive=" !text-black bg-green-500  rounded-full"
+           class="text-sm font-medium text-gray-700 dark:text-gray-300  hover:bg-primary/5 transition-all hover:bg-green-500 transform duration-300 hover:scale-[1.1] hover:text-black  py-2 px-6  rounded-2xl">
+          Cars
+        </a>
+        <a routerLink="/about" routerLinkActive="bg-green-500 !text-black rounded-full"
+           class="text-sm font-medium text-gray-300   hover:bg-primary/5 transition-all hover:bg-green-500 transform duration-300 hover:scale-[1.1] hover:text-black  py-2 px-6  rounded-2xl">
+          About Us
+        </a>
+      </div>
+
+      <!-- Desktop Actions -->
+      <div class="hidden md:flex items-center gap-3">
+        <button (click)="toggleTheme()"
+                class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:scale-105">
+          @if (isDark) {
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          } @else {
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          }
+        </button>
+
+        @if (isLoggedIn) {
+          <button (click)="logout()"
+                  class="px-5 py-2 rounded-xl text-sm font-semibold bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 transition-all">
+            Logout
+          </button>
+        } @else {
+          <a routerLink="/login"
+             class="px-5 py-2 rounded-xl text-sm font-semibold bg-primary text-white hover:bg-primary-dark transition-all shadow-lg shadow-primary/25">
+            Sign In
+          </a>
+        }
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button (click)="toggleMobile()"
+              class="md:hidden w-10 h-10 rounded-xl flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+        @if (!isMobileOpen) {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        } @else {
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMobileOpen) {
+    <div class="md:hidden bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 shadow-xl">
+      <div class="px-4 py-4 space-y-1">
+        <a routerLink="/" (click)="closeMobile()" routerLinkActive="text-primary bg-primary/5" [routerLinkActiveOptions]="{exact: true}"
+           class="block px-4 py-3 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary/5 transition-all">
+          Home
+        </a>
+        <a routerLink="/cars" (click)="closeMobile()" routerLinkActive="text-primary bg-primary/5"
+           class="block px-4 py-3 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary/5 transition-all">
+          Cars
+        </a>
+        <a routerLink="/about" (click)="closeMobile()" routerLinkActive="text-primary bg-primary/5"
+           class="block px-4 py-3 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-primary/5 transition-all">
+          About Us
+        </a>
+
+        <div class="flex items-center gap-3 pt-3 border-t border-gray-200 dark:border-gray-800">
+          <button (click)="toggleTheme()"
+                  class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800">
+            @if (isDark) {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              </svg>
+            } @else {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+              </svg>
+            }
+          </button>
+
+          @if (isLoggedIn) {
+            <button (click)="logout(); closeMobile()"
+                    class="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-red-500/10 text-red-600 dark:text-red-400">
+              Logout
+            </button>
+          } @else {
+            <a routerLink="/login" (click)="closeMobile()"
+               class="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-primary text-white text-center">
+              Sign In
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</nav>

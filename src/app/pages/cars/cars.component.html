@@ -1,0 +1,41 @@
+<section class="py-12 sm:py-16 dark:bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">All Cars</h1>
+      <p class="text-gray-500 dark:text-gray-400 mt-2">Choose the right car for you from our diverse fleet</p>
+    </div>
+    <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
+      @for (cat of categories; track cat.key) {
+        <button (click)="selectCategory(cat.key)" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200" [ngClass]="selectedCategory === cat.key ? 'bg-primary text-white shadow-lg shadow-primary/25' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'">
+          {{ cat.name }}
+        </button>
+      }
+    </div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Showing {{ filteredCars.length }} cars</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (car of filteredCars; track car.id) {
+        <a [routerLink]="['/cars', car.id]" class="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-800">
+          <div class="relative h-56 overflow-hidden">
+            <img [src]="car.image" [alt]="car.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">{{ car.price.toLocaleString() }} EGP/day</div>
+            <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full">{{ car.count }} available</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{ car.name }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed min-h-[2.5rem]">{{ truncate(car.description, 90) }}</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+              <span class="text-white font-bold">{{ car.price.toLocaleString() }} <span class="text-xs font-normal text-gray-400">EGP/day</span></span>
+              <span class="flex items-center gap-1.5 bg-primary/10 text-primary text-sm font-semibold px-4 py-2 rounded-xl group-hover:bg-primary group-hover:text-white transition-all">Book Now <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+    @if (filteredCars.length === 0) {
+      <div class="text-center py-20">
+        <svg class="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <p class="text-gray-500 dark:text-gray-400 text-lg">No cars found in this category</p>
+      </div>
+    }
+  </div>
+</section>

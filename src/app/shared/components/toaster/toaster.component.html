@@ -1,0 +1,8 @@
+@if (toast$ | async; as toast) {
+  @if (toast.show) {
+    <div class="toast-enter fixed top-20 right-4 z-[101] flex items-center gap-3 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-2xl shadow-emerald-600/30">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span class="text-sm font-semibold">{{ toast.message }}</span>
+    </div>
+  }
+}
