@@ -6,7 +6,4 @@
 ##### Styling: SASS / Tailwind.
 
 # Live Server:
-##### You can view the live website right now: https://drivex-cars.netlify.app
-
-
-
+##### You can view the live website right now: https://drivex-cars.netlify.app.
